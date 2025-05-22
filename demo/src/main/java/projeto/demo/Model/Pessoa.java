@@ -2,6 +2,7 @@ package projeto.demo.Model;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Entity(name = "pessoa")
 @Table(name = "pessoa")
-public class pessoa implements UserDetails {
+public class Pessoa implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +20,9 @@ public class pessoa implements UserDetails {
 
     private String login;
 
-    private String Role;
+    private EnumRole Role;
 
-    public  pessoa(){}
+    public Pessoa(){}
 
     public Long getId() {
         return id;
@@ -43,21 +44,24 @@ public class pessoa implements UserDetails {
         this.login = login;
     }
 
-    public String getRole() {
+    public EnumRole getRole() {
         return Role;
     }
 
-    public void setRole(String role) {
+    public void setRole(EnumRole role) {
         Role = role;
+    }
+
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
-
-    public String getPassword() {
-        return password;
+        if (this.Role == EnumRole.ADMIN) return List.of(new SimpleGrantedAuthority("ADMIN")
+        , new SimpleGrantedAuthority("USER"));
+        return null;
     }
 
     @Override
