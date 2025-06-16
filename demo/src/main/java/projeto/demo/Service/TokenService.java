@@ -1,4 +1,4 @@
-package projeto.demo.config;
+package projeto.demo.Service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
