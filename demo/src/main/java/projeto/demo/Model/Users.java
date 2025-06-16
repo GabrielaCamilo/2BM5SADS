@@ -8,21 +8,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity(name = "pessoa")
-@Table(name = "pessoa")
-public class Pessoa implements UserDetails {
+@Entity(name = "user")
+@Table(name = "user")
+public class Users implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private  String password;
-
     private String login;
-
     private EnumRole Role;
 
-    public Pessoa(){}
+    public Users(){}
+
+    public Users(String username, String encryptedPassword, EnumRole role) {
+    }
 
     public Long getId() {
         return id;
@@ -52,7 +52,6 @@ public class Pessoa implements UserDetails {
         Role = role;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -66,7 +65,7 @@ public class Pessoa implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return this.login;
     }
 
     @Override
