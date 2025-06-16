@@ -1,6 +1,6 @@
-package projeto.demo.config;
+package projeto.demo.security;
 
-import projeto.demo.config.TokenService;
+import projeto.demo.Service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import projeto.demo.Model.Users;
 import projeto.demo.Repository.UserRepository;
-import projeto.demo.config.TokenService;
+import projeto.demo.Service.TokenService;
 
 @RestController
 @RequestMapping("/auth")
